@@ -1,0 +1,24 @@
+{
+  "name": "snippit",
+  "version": "1.0.0",
+  "description": "Smart video splitter for short-form clips.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --minify"
+  },
+  "keywords": [
+    "video",
+    "splitter",
+    "clips",
+    "short-form"
+  ],
+  "author": "CJ Tinae",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.6"
+  }
+}
