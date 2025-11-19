@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "primary-soft-pink": "#FFEDED",
-        "secondary-bright-blue": "#007AFF",
+        "secondary-bright-blue": "#7BDFF2",
       },
       spacing: {
         128: "32rem",
