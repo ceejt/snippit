@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html"],
+  content: ["./src/index.html"],
   theme: {
     extend: {
       colors: {
-        "soft-pink": "#FFEDED",
-        "upload-blue": "#007AFF",
+        "primary-soft-pink": "#FFEDED",
+        "secondary-bright-blue": "#007AFF",
       },
       spacing: {
         128: "32rem",
