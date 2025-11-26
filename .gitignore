@@ -9,6 +9,8 @@ node_modules/
 dist/
 dist/output.css
 dist/*.map
+dist/
+src/styles.css
 
 # =========================
 #   LOG FILES
