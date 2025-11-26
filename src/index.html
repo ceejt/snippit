@@ -11,7 +11,7 @@
 <body class="bg-white min-h-screen font-sans">
 
     <div class="flex flex-col lg:flex-row min-h-screen">
-
+        <!-- Left panel -->
         <div class="w-full lg:w-5/12 bg-primary-soft-pink p-8 sm:p-12 md:p-16 relative">
 
             <header class="flex justify-start items-center space-x-12 mb-20">
@@ -42,12 +42,12 @@
                     </button>
                 </div>
             </main>
-
+            <!-- Decorative circle -->
             <div
                 class="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-primary-soft-pink border-8 border-white">
             </div>
         </div>
-
+        <!-- Right panel: Upload area -->
         <div class="w-full lg:w-7/12 flex items-center justify-center p-8 sm:p-12 md:p-16 ">
             <div class="w-full max-w-lg">
                 <div
@@ -70,7 +70,134 @@
             </div>
         </div>
     </div>
+    <!-- Editor space -->
+    <template id="videoEditorTemplate">
+        <div class="w-full max-w-4xl mx-auto">
+            <div class="bg-black rounded-lg overflow-hidden mb-4 shadow-lg">
+                <video id="videoPlayer" class="w-full" controls>
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
 
+            <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="text-gray-600">Resolution:</span>
+                        <span id="videoResolution" class="font-medium ml-2">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Aspect Ratio:</span>
+                        <span id="videoAspectRatio" class="font-medium ml-2">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Total Duration:</span>
+                        <span id="totalDuration" class="font-medium ml-2">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Format:</span>
+                        <span id="videoFormat" class="font-medium ml-2">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-4">
+                <h3 class="text-lg font-semibold mb-3">Quick Presets</h3>
+                <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+                    <button class="preset-btn px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 text-sm"
+                        data-duration="60">
+                        📘 Facebook Reels (60s)
+                    </button>
+                    <button
+                        class="preset-btn px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 text-sm"
+                        data-duration="90">
+                        📷 Instagram Reels (90s)
+                    </button>
+                    <button class="preset-btn px-4 py-2 bg-pink-100 text-pink-700 rounded-lg hover:bg-pink-200 text-sm"
+                        data-duration="15">
+                        📱 IG Stories (15s)
+                    </button>
+                    <button class="preset-btn px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 text-sm"
+                        data-duration="30">
+                        🎬 TikTok (30s)
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-4">
+                <h3 class="text-lg font-semibold mb-4">Edit Timeline</h3>
+
+                <div class="mb-4 p-3 bg-gray-50 rounded-lg">
+                    <label class="block text-sm font-medium mb-2">Auto-Split Video</label>
+                    <div class="flex gap-2 items-center">
+                        <input type="number" id="splitDuration" min="5" max="180" value="30"
+                            class="px-3 py-1 border rounded w-20 text-sm">
+                        <span class="text-sm py-1">seconds per clip</span>
+                        <button id="autoSplitBtn"
+                            class="ml-auto px-4 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600 text-sm">
+                            Auto Split
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-2">Start Time: <span
+                            id="startTimeDisplay">0:00</span></label>
+                    <input type="range" id="startTimeSlider" min="0" max="100" value="0" step="0.1"
+                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-2">End Time: <span
+                            id="endTimeDisplay">0:00</span></label>
+                    <input type="range" id="endTimeSlider" min="0" max="100" value="100" step="0.1"
+                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+
+                <div class="flex justify-between items-center mb-4">
+                    <div class="text-sm text-gray-600">
+                        Selected Duration: <span id="durationDisplay" class="font-semibold">0:00</span>
+                    </div>
+                    <div id="durationWarning" class="text-xs text-red-600 hidden">
+                        ⚠️ Duration exceeds platform limit
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <button id="previewBtn" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                        Preview Cut
+                    </button>
+                    <button id="resetBtn" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                        Reset
+                    </button>
+                    <button id="processBtn" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                        Process Video
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-semibold mb-4">Upload To</h3>
+
+                <div class="space-y-3">
+                    <button id="uploadFacebook"
+                        class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2">
+                        <span>📘</span> Upload to Facebook Reels
+                    </button>
+
+                    <button id="uploadInstagram"
+                        class="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 flex items-center justify-center gap-2">
+                        <span>📷</span> Upload to Instagram Stories
+                    </button>
+
+                    <button id="downloadBtn"
+                        class="w-full px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                        💾 Download Video
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="./app.js"></script>
 </body>
 
 </html>
