@@ -582,11 +582,6 @@ video {
   top: 33.333333%;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -625,18 +620,6 @@ video {
 
 .h-8 {
   height: 2rem;
-}
-
-.h-128 {
-  height: 32rem;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.h-\[500px\] {
-  height: 500px;
 }
 
 .min-h-screen {
@@ -728,30 +711,6 @@ video {
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-x-40 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(10rem * var(--tw-space-x-reverse));
-  margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-20 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(5rem * var(--tw-space-x-reverse));
-  margin-left: calc(5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-0 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0px * var(--tw-space-x-reverse));
-  margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .rounded-3xl {
   border-radius: 1.5rem;
 }
@@ -762,42 +721,6 @@ video {
 
 .rounded-lg {
   border-radius: 0.5rem;
-}
-
-.rounded-none {
-  border-radius: 0px;
-}
-
-.rounded-bl-\[32px\] {
-  border-bottom-left-radius: 32px;
-}
-
-.rounded-tl-\[32px\] {
-  border-top-left-radius: 32px;
-}
-
-.rounded-bl-3xl {
-  border-bottom-left-radius: 1.5rem;
-}
-
-.rounded-bl-\[64px\] {
-  border-bottom-left-radius: 64px;
-}
-
-.rounded-tl-3xl {
-  border-top-left-radius: 1.5rem;
-}
-
-.rounded-tl-\[64px\] {
-  border-top-left-radius: 64px;
-}
-
-.rounded-br-\[64px\] {
-  border-bottom-right-radius: 64px;
-}
-
-.rounded-tr-\[64px\] {
-  border-top-right-radius: 64px;
 }
 
 .border-4 {
@@ -869,9 +792,9 @@ video {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-6xl {
@@ -892,21 +815,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
 }
 
 .font-bold {
@@ -965,12 +873,6 @@ video {
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow-2xl {
-  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
