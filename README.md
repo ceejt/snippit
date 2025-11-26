@@ -1,6 +1,6 @@
 # Snippit
 
-Clip it. Snippit!
+Clip it. Snippit! <br>
 Smart video splitter for short-form clips (stories and reels). Automatically splits videos into optimal segments, avoiding awkwardly short clip continuations.
 
 ## Features
