@@ -65,14 +65,28 @@ class SnippitApp {
 
   loadVideo(file) {
     const url = URL.createObjectURL(file);
-    this.displayVideoEditor(url);
+    const container =
+      document.querySelector(".w-full.max-w-4xl") || document.body;
+    this.displayVideoEditor(url, container);
   }
 
-  
+  displayVideoEditor(videoUrl, container) {
+    const template = document.getElementById("videoEditorTemplate");
+    const content = document.importNode(template.content, true);
+    const videoSource = content.querySelector("#videoPlayer source");
 
-  // ============================================
-  // 2. TIMELINE FOR VIDEO CUT AND EDIT
-  // ============================================
+    if (videoSource) {
+      videoSource.src = videoUrl;
+    }
+    container.classList.remove("flex", "items-center", "justify-center");
+    container.innerHTML = "";
+    container.appendChild(content);
+
+    // After loading the HTML, you would call a setup function
+    this.setupVideoEditor();
+  }
+
+  // TIMELINE FOR VIDEO CUT AND EDIT
 
   setupVideoEditor() {
     this.video = document.getElementById("videoPlayer");
@@ -322,9 +336,7 @@ class SnippitApp {
     }
   }
 
-  // ============================================
-  // 3. AUTO UPLOAD TO FACEBOOK AND INSTAGRAM
-  // ============================================
+  // AUTO UPLOAD TO FACEBOOK AND INSTAGRAM
 
   async uploadToSocialMedia(platform) {
     // Check authentication
@@ -385,9 +397,7 @@ class SnippitApp {
     URL.revokeObjectURL(url);
   }
 
-  // ============================================
   // 4. CREATE ACCOUNT (GOOGLE SIGN IN/UP)
-  // ============================================
 
   checkAuthState() {
     // Check if user is already logged in (localStorage)
