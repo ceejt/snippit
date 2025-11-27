@@ -12,8 +12,8 @@ class SnippitApp {
     this.platformLimits = {
       facebook: { maxDuration: 60, ratio: "9:16" },
       instagram: { maxDuration: 90, ratio: "9:16" },
-      stories: { maxDuration: 15, ratio: "9:16" },
-      tiktok: { maxDuration: 30, ratio: "9:16" },
+      stories: { maxDuration: 60, ratio: "9:16" },
+      tiktok: { maxDuration: 3600, ratio: "9:16" },
     };
 
     this.init();
@@ -66,24 +66,31 @@ class SnippitApp {
   loadVideo(file) {
     const url = URL.createObjectURL(file);
     const container =
-      document.querySelector(".w-full.max-w-4xl") || document.body;
+      document.querySelector(
+        ".w-full.lg\\:w-7\\/12.flex.items-center.justify-center.p-8.sm\\:p-12.md\\:p-16"
+      ) || document.body;
     this.displayVideoEditor(url, container);
   }
 
   displayVideoEditor(videoUrl, container) {
     const template = document.getElementById("videoEditorTemplate");
-    const content = document.importNode(template.content, true);
-    const videoSource = content.querySelector("#videoPlayer source");
+    const clone = template.content.cloneNode(true);
+    const videoSource = clone.querySelector("#videoPlayer source");
 
     if (videoSource) {
       videoSource.src = videoUrl;
     }
     container.classList.remove("flex", "items-center", "justify-center");
     container.innerHTML = "";
-    container.appendChild(content);
+    container.appendChild(clone);
 
     // After loading the HTML, you would call a setup function
     this.setupVideoEditor();
+
+    const videoPlayer = document.getElementById("videoPlayer");
+    if (videoPlayer) {
+      videoPlayer.load();
+    }
   }
 
   // TIMELINE FOR VIDEO CUT AND EDIT
@@ -220,6 +227,11 @@ class SnippitApp {
 
     const container = document.querySelector(".w-full.max-w-4xl");
     container.insertBefore(warningDiv, container.firstChild.nextSibling);
+
+    const videoPlayerContainer = document.querySelector(".bg-black.rounded-lg");
+    if (videoPlayerContainer && container) {
+      container.insertBefore(warningDiv, videoPlayerContainer);
+    }
   }
 
   applyPreset(duration) {
