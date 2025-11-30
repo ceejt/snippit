@@ -7,9 +7,18 @@
     <title>Snippit - Clip Cutter</title>
     <link href="./global.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
-    <script type="module"
-        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+    <script type="module">
+        import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/button/button.js';
+        import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/range/range.js';
+        import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/progress-bar/progress-bar.js';
+        import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/alert/alert.js';
+        import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/icon/icon.js';
+
+        import { setBasePath } from 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/utilities/base-path.js';
+        setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/');
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.11.6/ffmpeg.min.js"></script>
+    <script src="./app.js" defer></script>
 </head>
 
 <body class="bg-white min-h-screen font-sans">
@@ -201,7 +210,6 @@
             </div>
         </div>
     </template>
-    <script src="./app.js"></script>
 </body>
 
 </html>
