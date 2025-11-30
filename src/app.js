@@ -15,7 +15,13 @@ class SnippitApp {
       stories: { maxDuration: 60, ratio: "9:16" },
       tiktok: { maxDuration: 3600, ratio: "9:16" },
     };
+    this.initialViewContainer = document.getElementById("app-view-container");
+    this.initialHTML = this.initialViewContainer
+      ? this.initialViewContainer.innerHTML
+      : "";
 
+    console.log("Container Element Found:", !!this.initialViewContainer);
+    console.log("Initial HTML Length:", this.initialHTML.length);
     this.init();
   }
 
@@ -66,9 +72,7 @@ class SnippitApp {
   loadVideo(file) {
     const url = URL.createObjectURL(file);
     const container =
-      document.querySelector(
-        ".w-full.lg\\:w-7\\/12.flex.items-center.justify-center.p-8.sm\\:p-12.md\\:p-16"
-      ) || document.body;
+      document.querySelector("app-view-container") || document.body;
     this.displayVideoEditor(url, container);
   }
 
@@ -91,6 +95,10 @@ class SnippitApp {
     if (videoPlayer) {
       videoPlayer.load();
     }
+
+    if (backBtn) {
+      backBtn.addEventListener("click", () => this.displayHomeView());
+    }
   }
 
   // TIMELINE FOR VIDEO CUT AND EDIT
@@ -103,6 +111,7 @@ class SnippitApp {
     const resetBtn = document.getElementById("resetBtn");
     const processBtn = document.getElementById("processBtn");
     const autoSplitBtn = document.getElementById("autoSplitBtn");
+    const backBtn = document.getElementById("back-btn");
 
     // Wait for video metadata to load
     this.video.addEventListener("loadedmetadata", () => {
@@ -345,6 +354,20 @@ class SnippitApp {
     } finally {
       processBtn.disabled = false;
       processBtn.textContent = "Process Video";
+    }
+  }
+
+  displayHomeView() {
+    if (this.initialViewContainer && this.initialHTML) {
+      this.initialViewContainer.innerHTML = this.initialHTML;
+
+      this.initialViewContainer.classList.add(
+        "flex",
+        "items-center",
+        "justify-center"
+      );
+      this.setupEventListeners();
+      console.log("Back to Upload page.");
     }
   }
 
