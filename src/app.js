@@ -1,7 +1,7 @@
 // Snippit: Clip cutter
 // Main application logic
 
-export class SnippitApp {
+class SnippitApp {
   constructor() {
     this.video = null;
     this.videoFile = null;
@@ -27,7 +27,7 @@ export class SnippitApp {
 
   setupEventListeners() {
     // Upload button
-    const uploadBtn = document.querySelector('sl-button');
+    const uploadBtn = document.querySelector(".btn-upload");
     if (uploadBtn) {
       uploadBtn.addEventListener("click", () => this.handleUploadClick());
     }
