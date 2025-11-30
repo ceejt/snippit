@@ -2,8 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Brand colors */
+  --snippit-pink: #ffeded;
+  --snippit-blue: #7bdff2;
+  --snippit-blue-hover: #5ad1ec;
+
+  /* Override Shoelace primary color */
+  --sl-color-primary-600: #7bdff2;
+  --sl-color-primary-700: #5ad1ec;
+
+  /* Border radius */
+  --sl-border-radius-medium: 0.5rem;
+  --sl-border-radius-large: 1.5rem;
+
+  /* Fonts */
+  --sl-font-sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Buttons */
+sl-button[variant="primary"]::part(base) {
+  background-color: var(--snippit-blue);
+  border-color: var(--snippit-blue);
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+}
+
+sl-button[variant="primary"]::part(base):hover {
+  background-color: var(--snippit-blue-hover);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Range Sliders */
+sl-range::part(thumb) {
+  background: var(--snippit-blue);
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+sl-range::part(track-active) {
+  background: var(--snippit-blue);
+}
+
+/* Progress Bar */
+sl-progress-bar::part(indicator) {
+  background: var(--snippit-blue);
+}
+
+sl-progress-bar::part(base) {
+  background: var(--snippit-pink);
+}
+
+/* Alerts */
+sl-alert[variant="warning"]::part(base) {
+  background-color: var(--snippit-pink);
+  border-left: 4px solid #ffd6d6;
+}
+
+/* Legacy button class (keep for compatibility) */
 .btn-upload {
-  background-color: theme("colors.secondary-bright-blue");
+  background-color: var(--snippit-blue);
 }
 
 input[type="range"]::-webkit-slider-thumb {
