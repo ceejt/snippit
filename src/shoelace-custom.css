@@ -1,0 +1,40 @@
+/* Buttons */
+sl-button[variant="primary"]::part(base) {
+  background-color: #7bdff2 !important;
+  border-color: #7bdff2 !important;
+  color: white !important;
+  font-weight: 500;
+  transition: all 150ms ease-in-out;
+}
+
+sl-button[variant="primary"]::part(base):hover {
+  background-color: #5ad1ec !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Range Sliders */
+sl-range::part(thumb) {
+  background: #7bdff2 !important;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+sl-range::part(track-active) {
+  background: #7bdff2 !important;
+}
+
+/* Progress Bar */
+sl-progress-bar::part(indicator) {
+  background: #7bdff2 !important;
+}
+
+sl-progress-bar::part(base) {
+  background: #ffeded !important;
+}
+
+/* Alerts */
+sl-alert[variant="warning"]::part(base) {
+  background-color: #ffeded !important;
+  border-left: 4px solid #ffd6d6;
+}
