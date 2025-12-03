@@ -196,6 +196,16 @@ class SnippitApp {
     const height = this.video.videoHeight;
     const duration = this.video.duration;
 
+    if (width > height) {
+      // Landscape
+      this.video.style.maxWidth = "100%";
+      this.video.style.maxHeight = "600px";
+    } else {
+      // Portrait
+      this.video.style.maxWidth = "400px";
+      this.video.style.maxHeight = "700px";
+    }
+
     // Calculate aspect ratio
     const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
     const divisor = gcd(width, height);
@@ -231,7 +241,7 @@ class SnippitApp {
   showAspectRatioWarning(message) {
     const warningDiv = document.createElement("div");
     warningDiv.className =
-      "bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 mb-4 text-sm";
+      "bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 mb-4 text-sm flex justify-center";
     warningDiv.innerHTML = `<strong>⚠️ Note:</strong> ${message}`;
 
     const container = document.querySelector(".w-full.max-w-4xl");

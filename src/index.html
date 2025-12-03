@@ -68,8 +68,11 @@
     <!-- Editor space -->
     <template id="videoEditorTemplate">
         <div class="w-full max-w-4xl mx-auto">
-            <div class="bg-black rounded-lg overflow-hidden mb-4 shadow-lg">
-                <video id="videoPlayer" class="w-full" controls>
+            <button id="back-btn" class="mt-8 px-6 py-3 text-black font-medium rounded-lg shadow-xl btn-back">
+                Back
+            </button>
+            <div class="bg-black rounded-lg overflow-hidden mb-4 shadow-lg flex justify-center">
+                <video id="videoPlayer" class="max-w-full max-h-[600px] object-contain" controls>
                     <source src="" type="video/mp4">
                 </video>
             </div>
@@ -193,10 +196,6 @@
             <!-- <button id="back-btn" class="mt-8 px-6 py-3 text-white font-medium rounded-lg shadow-xl">
                 Back
             </button> -->
-            <button id="back-btn"
-                class="mt-8 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-black font-medium rounded-lg shadow-xl">
-                Back
-            </button>
         </div>
     </template>
     <script src="./app.js"></script>
